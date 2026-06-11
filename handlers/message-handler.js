@@ -19,7 +19,7 @@ console.log(`[Message-Handler] Anti-Phishing: ALL channels (text + image)`);
 // ─────────────────────────────────────────────
 function runPythonScript(scriptPath, args = []) {
   return new Promise((resolve, reject) => {
-    const python = spawn('py', ['-3.11', scriptPath, ...args], {
+    const python = spawn('python3', [scriptPath, ...args], {
       env: { ...process.env, PYTHONIOENCODING: 'utf-8' }
     });
     let output = '';

@@ -1,6 +1,6 @@
 // handlers/chatbot.js
 
-const { Mistral } = require("@mistralai/mistralai");
+const Mistral = (...args) => import("@mistralai/mistralai").then(m => new m.Mistral(...args));
 const { tavily } = require("tavily");
 const { AttachmentBuilder } = require("discord.js");
 const https = require("https");
