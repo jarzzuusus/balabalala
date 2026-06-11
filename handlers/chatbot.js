@@ -1,10 +1,15 @@
 // handlers/chatbot.js
-const Mistral = require("@mistralai/mistralai").Mistral;
+
+let mistral = null;
+(async () => {
+  const { Mistral } = await import("@mistralai/mistralai");
+  mistral = new Mistral({ apiKey: process.env.MISTRAL_KEY });
+})();
 const { tavily } = require("@tavily/core");
 const { AttachmentBuilder } = require("discord.js");
 const https = require("https");
 
-const mistral = new Mistral({ apiKey: process.env.MISTRAL_KEY });
+
 const tvly    = tavily({ apiKey: process.env.TAVILY_KEY });
 
 const TARGET_CHANNEL_ID = process.env.CHATBOT_CHANNEL_ID || "1513867194545475665";
